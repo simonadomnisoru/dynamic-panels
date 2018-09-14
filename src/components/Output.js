@@ -12,12 +12,7 @@ class Output extends React.PureComponent {
     componentDidMount() {
         this.unsubscribe = store.subscribe(() => {
             this.setState({
-                style: {
-                    backgroundColor: store.getState().editableOutput.color,
-                    width: store.getState().editableOutput.size,
-                    height: store.getState().editableOutput.size,
-                    borderRadius: store.getState().editableOutput.border,
-                }
+                style: store.getState().editableOutput
             });
         });
     }

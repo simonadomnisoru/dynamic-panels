@@ -5,7 +5,7 @@ class Gallery extends React.PureComponent {
     constructor() {
         super();
         this.state = {
-            outputs: {}
+            outputs: []
         };
     }
 
@@ -21,29 +21,30 @@ class Gallery extends React.PureComponent {
         this.unsubscribe();
     }
     render() {
-        return (
-            <Table responsive>
-                <thead>
-                    <tr>
-                        <th>Output</th>
-                        <th>Save</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Table cell</td>
-                        <td><Button bsStyle="primary" type="button">Select</Button></td>
-                        <td><Button bsStyle="danger" type="button">Delete</Button></td>
-                    </tr>
-                    <tr>
-                        <td>Table cell</td>
-                        <td><Button bsStyle="primary" type="button">Select</Button></td>
-                        <td><Button bsStyle="danger" type="button">Delete</Button></td>
-                    </tr>
-                </tbody>
-            </Table>
-        );
+        if (this.state && this.state.outputs)
+            return (
+                <Table responsive>
+                    <thead>
+                        <tr>
+                            <th>Output</th>
+                            <th>Save</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.outputs.map((data) => {
+                            return (
+                                <tr>
+                                    <td><div style={data}></div></td>
+                                    <td><Button bsStyle="primary" type="button">Select</Button></td>
+                                    <td><Button bsStyle="danger" type="button">Delete</Button></td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </Table>
+            );
+        else return null;
     }
 }
 
