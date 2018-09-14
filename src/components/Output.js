@@ -5,12 +5,7 @@ class Output extends React.PureComponent {
     constructor() {
         super();
         this.state = {
-            style: {
-                backgroundColor: store.getState().color,
-                width: store.getState().size,
-                height: store.getState().size,
-                borderRadius: store.getState().border,
-            }
+            style: {}
         };
     }
 
@@ -18,10 +13,10 @@ class Output extends React.PureComponent {
         this.unsubscribe = store.subscribe(() => {
             this.setState({
                 style: {
-                    backgroundColor: store.getState().color,
-                    width: store.getState().size,
-                    height: store.getState().size,
-                    borderRadius: store.getState().border,
+                    backgroundColor: store.getState().editableOutput.color,
+                    width: store.getState().editableOutput.size,
+                    height: store.getState().editableOutput.size,
+                    borderRadius: store.getState().editableOutput.border,
                 }
             });
         });

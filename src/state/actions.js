@@ -1,7 +1,8 @@
-const actions = {
-    setColor: 'setColor',
-    setSize: 'setSize',
-    setBorder: 'setBorder'
+const actionsConstants = {
+    setColor: 'SET_COLOR',
+    setSize: 'SET_SIZE',
+    setBorder: 'SET_DORDER',
+    saveOutput: 'SAVE_OUTPUT'
 };
 
-export default actions;
+export default actionsConstants;

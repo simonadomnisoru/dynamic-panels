@@ -1,13 +1,13 @@
-import actionTypes from './actions';
-
 let reducerOutput = (state, action) => {
     switch (action.type) {
-        case actionTypes.setColor:
-            return { ...state, color: action.color };
-        case actionTypes.setSize:
-            return { ...state, size: action.size };
-        case actionTypes.setBorder:
-            return { ...state, border: action.border };
+        case 'SET_COLOR':
+            return { ...state, editableOutput: { ...state.editableOutput, color: action.color } };
+        case 'SET_SIZE':
+            return { ...state, editableOutput: { ...state.editableOutput, size: action.size } };
+        case 'SET_DORDER':
+            return { ...state, editableOutput: { ...state.editableOutput, border: action.border } };
+        case 'SAVE_OUTPUT':
+            return { ...state, outputs: [...state.outputs, state.editableOutput] };
         default:
             return state;
     }
