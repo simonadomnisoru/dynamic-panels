@@ -29,9 +29,7 @@ class Output extends React.PureComponent {
     render() {
         return (
             <div className="Output">
-                <div style={this.state.style}>
-                    Dynamic
-                </div>
+                <div style={this.state.style}></div>
             </div>
         );
     }
