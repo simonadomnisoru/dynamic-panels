@@ -1,30 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Panel } from 'react-bootstrap';
-import store from '../state/store';
+import { connect } from 'react-redux';
 import '../styles/App.css';
-class Output extends React.PureComponent {
-    componentDidMount() {
-        this.unsubscribe = store.subscribe(() => {
-            this.setState({
-                style: store.getState().editableOutput
-            });
-        });
-    }
 
-    componentWillUnmount() {
-        this.unsubscribe();
+const Output = (props) => {
+    if (props) {
+        return (
+            <Panel>
+                <Panel.Heading>Output</Panel.Heading>
+                <Panel.Body> <div style={props.style}></div></Panel.Body>
+            </Panel>);
     }
+    else return null;
+};
 
-    render() {
-        if (this.state && this.state.style)
-            return (
-                <Panel>
-                    <Panel.Heading>Output</Panel.Heading>
-                    <Panel.Body> <div style={this.state.style}></div></Panel.Body>
-                </Panel>
-            );
-        else return null;
-    }
-}
+Output.propTypes = {
+    style: PropTypes.object
+};
 
-export default Output;
+function mapStateToProps(state) {
+    return {
+        style: state.editableOutput,
+    };
+};
+
+export default connect(mapStateToProps)(Output);

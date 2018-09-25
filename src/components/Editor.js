@@ -1,20 +1,21 @@
 import React from 'react';
-import { setColorDispatcher, setSizeDispatcher, setBorderDispatcher, saveOutput } from '../state/dispatchers';
+import { BlockPicker } from 'react-color';
 import { Button, FormControl, ControlLabel, Panel } from 'react-bootstrap';
+import { setColorDispatcher, setSizeDispatcher, setBorderDispatcher, saveOutput } from '../state/dispatchers';
 import '../styles/App.css';
 
 class Editor extends React.PureComponent {
-    onEdit = (ev, field) => {
+    onEdit = (ev, field, color) => {
         switch (field) {
-            case 'color':
-                setColorDispatcher(ev.target.value);
-                break;
-            case 'size':
-                setSizeDispatcher(ev.target.value + 'px');
-                break;
-            case 'border':
-                setBorderDispatcher(ev.target.value + '%');
-                break;
+        case 'color':
+            setColorDispatcher(color.hex);
+            break;
+        case 'size':
+            setSizeDispatcher(ev.target.value + 'px');
+            break;
+        case 'border':
+            setBorderDispatcher(ev.target.value + '%');
+            break;
         }
     }
 
@@ -26,7 +27,7 @@ class Editor extends React.PureComponent {
             <Panel className="Editor">
                 <Panel.Heading>Editor</Panel.Heading>
                 <Panel.Body> <ControlLabel>Color</ControlLabel>
-                    <FormControl type="color" componentClass='input' onChange={ev => this.onEdit(ev, 'color')} />
+                    <BlockPicker onChangeComplete={(color, event) => this.onEdit(event, 'color', color)} />
                     <ControlLabel>Size</ControlLabel>
                     <FormControl type="range" componentClass='input' min="1" max="100" onChange={ev => this.onEdit(ev, 'size')} />
                     <ControlLabel>Border radius</ControlLabel>
