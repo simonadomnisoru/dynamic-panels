@@ -22,6 +22,14 @@ const setBorderDispatcher = (border) => {
 const saveOutput = () => {
     store.dispatch({
         type: actionTypes.saveOutput
-   });
+    });
 };
-export { setColorDispatcher, setSizeDispatcher, setBorderDispatcher, saveOutput };
+
+const deleteOutput = (id) => {
+    store.dispatch({
+        type: actionTypes.deleteOutput,
+        id
+    });
+};
+
+export { setColorDispatcher, setSizeDispatcher, setBorderDispatcher, saveOutput, deleteOutput };

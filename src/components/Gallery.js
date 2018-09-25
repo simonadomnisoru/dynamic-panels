@@ -1,14 +1,8 @@
 import React from 'react';
 import { Table, Button } from 'react-bootstrap';
+import { deleteOutput } from '../state/dispatchers';
 import store from '../state/store';
 class Gallery extends React.PureComponent {
-    constructor() {
-        super();
-        this.state = {
-            outputs: []
-        };
-    }
-
     componentDidMount() {
         this.unsubscribe = store.subscribe(() => {
             this.setState({
@@ -20,24 +14,29 @@ class Gallery extends React.PureComponent {
     componentWillUnmount() {
         this.unsubscribe();
     }
+
+    handleDelete = (ev) => {
+        deleteOutput(parseFloat(ev.target.value));
+    }
     render() {
         if (this.state && this.state.outputs)
             return (
                 <Table responsive>
                     <thead>
                         <tr>
-                            <th>Output</th>
-                            <th>Save</th>
+                            <th>Gallery</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.state.outputs.map((data) => {
                             return (
-                                <tr>
+                                <tr key={`gallery-${data.id}`}>
                                     <td><div style={data}></div></td>
-                                    <td><Button bsStyle="primary" type="button">Select</Button></td>
-                                    <td><Button bsStyle="danger" type="button">Delete</Button></td>
+                                    <td><Button bsStyle='danger' value={data.id} type='button' onClick={ev => this.handleDelete(ev)}>
+                                        Delete
+                                    </Button>
+                                    </td>
                                 </tr>
                             );
                         })}
@@ -47,5 +46,4 @@ class Gallery extends React.PureComponent {
         else return null;
     }
 }
-
 export default Gallery;

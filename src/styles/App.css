@@ -3,9 +3,3 @@
     display: flex;
     margin: 20px;
 }
-
-.Editor,
-.Output {
-  width: 45%;
-  border: 1px solid black;
-}
