@@ -9,7 +9,7 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);
-let store = createStore(persistedReducer, {
+const store = createStore(persistedReducer, {
     editableOutput: {
         'backgroundColor': '#000000',
         'width': '50px',
