@@ -12,7 +12,8 @@ An editor for stying different outputs. The saved outputs are preserved in the g
    - npm run linter
 
 ## Demo
-![demo](/uploads/ceafa36c01218dc8046f8e651368e94b/demo.png)
+![demo](https://user-images.githubusercontent.com/6817073/46138753-065f9d80-c24d-11e8-908d-a7dcda83f050.png)
+
 
 ## Libraries used for development
    - [Redux](https://redux.js.org/) used to manage the state of the project and to simulate the backend
